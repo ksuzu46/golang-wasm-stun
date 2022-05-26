@@ -1,0 +1,21 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>STUN Checker</title>
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+        <script src="js/wasm_exec.js"></script>
+        <script>
+go = new Go();
+WebAssembly.instantiateStreaming(fetch("js/main.wasm"), go.importObject)
+    .then(result => { go.run(result.instance); });
+        </script>
+    </head>
+    <body>
+        <h1>STUN Checker</h1>
+        <div id="loading">Loading ...</div>
+        <button id="run-button">Make STUN request</button>
+        <p id="result">Result will be printed here</p>
+    </body>
+</html>
